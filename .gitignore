@@ -24,4 +24,7 @@ node_modules/
 llms-full.txt
 llms-full1.txt
 
+# Local drafts (blog posts, internal writeups)
+blog/
+
 .github

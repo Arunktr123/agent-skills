@@ -192,15 +192,10 @@ const segment = catalystApp.cache().segment(SEGMENT_ID);
 
 ```javascript
 // Pool ID from Console → Job Scheduling → pool details
-const pool = catalystApp.jobScheduling().pool(POOL_ID);
-```
-
-### Circuit ID
-
-```javascript
-// Circuit ID from Console → Circuits → circuit details
-const circuit = catalystApp.circuit();
-const result = await circuit.execute(CIRCUIT_ID, { inputKey: 'value' });
+// ⚠️ There is NO .pool(POOL_ID) accessor in the Node SDK. Pools are read-only:
+const pool = await catalystApp.jobScheduling().getJobpool(POOL_ID);
+// Jobs/crons take the pool by name or id INSIDE their payload:
+//   jobScheduling().job().submitJob({ ..., jobpool_id: POOL_ID })
 ```
 
 ---
